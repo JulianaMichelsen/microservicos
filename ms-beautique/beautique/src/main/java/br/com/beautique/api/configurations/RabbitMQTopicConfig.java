@@ -26,4 +26,24 @@ public class RabbitMQTopicConfig {
     Binding bindingCustomer(Queue customerQueue, TopicExchange exchange){
         return BindingBuilder.bind(customerQueue).to(exchange).with("customer.#");
     }
+
+    @Bean
+    public Queue beautyProcedureQueue(){
+        return new Queue("beautyProcedureQueue", true);
+    }
+
+    @Bean
+    public Binding bindingBeautyProcedures(Queue beautyProcedureQueue, TopicExchange exchange){
+        return BindingBuilder.bind(beautyProcedureQueue).to(exchange).with("beautyProcedures.#");
+    }
+
+    @Bean
+    public Queue appointmentQueue(){
+        return new Queue("appointmentQueue", true);
+    }
+
+    @Bean
+    public Binding bindingAppointments(Queue appointmentQueue, TopicExchange exchange){
+        return BindingBuilder.bind(appointmentQueue).to(exchange).with(("appointments.#"));
+    }
 }
